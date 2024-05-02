@@ -1,10 +1,13 @@
+import bodyParser from "body-parser";
 import express from "express";
+
 import HelloRoute from "./routes/hello.route";
 
 export function createApp() {
-    const server = express();
+    const app = express();
+    app.use(bodyParser.json());
 
-    server.use("/hello", HelloRoute());
+    app.use("/hello", HelloRoute());
 
-    return server;
+    return app;
 }
