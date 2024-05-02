@@ -1,0 +1,38 @@
+{
+    "name": "{{ project_name }}",
+    "version": "{{ project_version }}",
+    "description": "{{ project_description }}",
+    "private": {{ project_private | lower }},
+    {% if with_entrypoint %}
+    "main": "./dist/index.js",
+    {% endif %}
+    "scripts": {
+        "build": "tsc",
+        {% if with_entrypoint %}
+        "dev": "NODE_ENV=development ts-node-dev --respawn src/index.ts",
+        "start": "NODE_ENV=production node dist/index.js",
+        {% endif %}
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/{{ vcs_github_path }}.git"
+    },
+    "keywords": [
+        "{{ project_keywords.split(',')|join('",\n"') }}"
+    ],
+    "author": "{{ copyright_holder_name }} <{{ copyright_holder_email }}>",
+    "license": "{{ copyright_license }}",
+    "devDependencies": {
+        "@types/chance": "^1.1.6",
+        "@types/jest": "^29.5.14",
+        "@types/node": "^22.13.1",
+        "chance": "^1.1.12",
+        "ts-jest": "^29.2.5",
+        "ts-node": "^10.9.2",
+        {% if with_entrypoint %}
+        "ts-node-dev": "^2.0.0",
+        {% endif %}
+        "typescript": "^5.7.3"
+    }
+}

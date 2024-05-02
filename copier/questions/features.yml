@@ -1,0 +1,5 @@
+---
+with_entrypoint:
+  type: bool
+  help: "With entrypoint script?"
+  default: False
