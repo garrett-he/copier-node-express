@@ -1,5 +1,5 @@
 ---
-with_entrypoint:
-  type: bool
-  help: "With entrypoint script?"
-  default: False
+docker_port:
+  type: int
+  help: "Port of docker container:"
+  default: 3000

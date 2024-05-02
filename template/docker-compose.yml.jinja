@@ -1,0 +1,9 @@
+services:
+  app:
+    container_name: "{{ project_name }}"
+    build:
+      context: .
+      args:
+        NODE_VERSION: "{{ node_version }}"
+    ports:
+      - "{{ docker_port }}:3000"
